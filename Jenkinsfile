@@ -1,6 +1,11 @@
 pipeline{
     agent any
     stages{
+         stage("Prepare Laravel"){
+            steps{
+                composer update
+            }
+        }
         stage("Prepare Laravel"){
             steps{
                 php artisan key:generate
