@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("stage1"){
             steps{
-                echo "========executing 1========"
+                echo "========stageing github start ========"
             }
             
         }
