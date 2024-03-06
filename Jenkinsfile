@@ -7,32 +7,11 @@ pipeline{
             steps{
                 echo "========executing 1========"
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
+            
         }
         stage("stage2"){
             steps{
                 echo "========executing 2========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
             }
         }
     }
