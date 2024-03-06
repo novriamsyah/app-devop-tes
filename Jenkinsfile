@@ -1,15 +1,26 @@
 pipeline{
     agent any
     stages{
-        stage("stage1"){
+        stage("Prepare Laravel"){
             steps{
-                echo "========stageing github start ========"
+                php artisan key:generate
             }
-            
         }
-        stage("stage2"){
+        stage("Laravel Test"){
             steps{
-                echo "========executing 2========"
+                php artisan test
+            }
+        }
+        stage("Dockerized Laravel"){
+            steps{
+                docker build -t xhartono/lapp
+                docker tag xhartono/app localhost:5000/xhartono/lapp
+                docker push localhost:5000/xhartono/lapp
+            }
+        }
+        stage("Deploy Laravel Application"){
+            steps{
+                docker run --name mylapp -p 8000:8000 -d localhost:5000/xhartono/lapp
             }
         }
     }
