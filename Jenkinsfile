@@ -60,7 +60,7 @@ pipeline {
                     //Delete or remove 
                     sh 'docker rm -f mylapp_ops'
                     // Docker run command
-                    sh 'docker run --name mylapp_ops -p 8080:8000 -d localhost:5000/xhartono/lapp'
+                    sh 'docker run --name mylapp_ops -p 9090:8000 -d localhost:5000/xhartono/lapp'
                 }
             }
         }
