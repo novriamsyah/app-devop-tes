@@ -29,6 +29,8 @@ pipeline {
             }
         }
 
+
+
         // Add other stages as needed
 
         stage("Dockerized Laravel") {
@@ -41,11 +43,15 @@ pipeline {
             }
         }
 
+
+
         stage("Deploy Laravel Application") {
             steps {
                 script {
+                    // remove
+                    sh 'docker rm -f mylapp'
                     // Docker run command
-                    sh 'docker run -p 8005:8000 -d localhost:5000/xhartono/lapp'
+                    sh 'docker run --name mylapp -p 8005:8000 -d localhost:5000/xhartono/lapp'
                 }
             }
         }
