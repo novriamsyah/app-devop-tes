@@ -36,7 +36,6 @@ pipeline {
         stage("User Acceptance Test Laravel") {
             steps {
                 script {
-                    sh 'docker rm -f mylapp_ops'
                     sh 'docker run --name mylapp1_uat -p 8000:8000 -d --rm localhost:5000/xhartono/lapp'
                     sh 'php artisan dusk'
                 }
@@ -61,7 +60,7 @@ pipeline {
                     //Delete or remove 
                     sh 'docker rm -f mylapp_ops'
                     // Docker run command
-                    sh 'docker run --name mylapp_ops -p 8000:8000 -d localhost:5000/xhartono/lapp'
+                    sh 'docker run --name mylapp_ops -p 8080:8000 -d localhost:5000/xhartono/lapp'
                 }
             }
         }
