@@ -16,7 +16,6 @@ pipeline {
         stage("Dockerized Laravel") {
             steps {
                 script {
-                    // Docker build and push commands
                     sh 'docker build -t xhartono/lapp .'
                     sh 'docker tag xhartono/lapp localhost:5000/xhartono/lapp'
                     sh 'docker push localhost:5000/xhartono/lapp'
