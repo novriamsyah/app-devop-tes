@@ -36,14 +36,14 @@ pipeline {
         stage("User Acceptance Test Laravel") {
             steps {
                 script {
-                    sh 'docker run --name mylapp1 -p 8000:8000 -d --rm localhost:5000/xhartono/lapp'
+                    sh 'docker run --name mylapp1_uat -p 8000:8000 -d --rm localhost:5000/xhartono/lapp'
                     sh 'php artisan dusk'
                     
                 }
                 post{
                         always{
                             echo "====++++always++++===="
-                            sh 'docker stop mylapp1'
+                            sh 'docker stop mylapp1_uat'
                         }
                         success{
                             echo "====++++only when successful++++===="
@@ -58,9 +58,9 @@ pipeline {
         stage("Deploy Laravel Application") {
             steps {
                 script {
-                    sh 'docker rm -f mylapp'
+                    sh 'docker rm -f mylapp_ops'
                     // Docker run command
-                    sh 'docker run --name mylapp -p 8000:8000 -d localhost:5000/xhartono/lapp'
+                    sh 'docker run --name mylapp_ops -p 8000:8000 -d localhost:5000/xhartono/lapp'
                 }
             }
         }
