@@ -38,7 +38,9 @@ pipeline {
                 script {
                     sh 'docker run --name mylapp1 -p 8000:8000 -d --rm localhost:5000/xhartono/lapp'
                     sh 'php artisan dusk'
-                    post{
+                    
+                }
+                post{
                         always{
                             echo "====++++always++++===="
                             sh 'docker stop mylapp1'
@@ -50,7 +52,6 @@ pipeline {
                             echo "====++++only when failed++++===="
                         }
                     }
-                }
             }
         }
 
