@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Docker run command
-                    sh 'docker run --name mylapp -p 8000:8000 -d localhost:5000/xhartono/lapp'
+                    sh 'docker run --name mylapp -p 8005:8000 -d localhost:5000/xhartono/lapp'
                 }
             }
         }
