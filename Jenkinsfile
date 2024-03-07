@@ -1,12 +1,29 @@
 pipeline {
     agent any
     stages {
+
         
         stage("Prepare Laravel") {
             steps {
                 script {
                     sh 'composer update'
                     sh 'php artisan key:generate'
+                }
+            }
+        }
+
+        stage("Unit Test Laravel") {
+            steps {
+                script {
+                    sh 'php artisan test'
+                }
+            }
+        }
+
+        stage("User Acceptance Test Laravel") {
+            steps {
+                script {
+                    sh 'php artisan dusk'
                 }
             }
         }
