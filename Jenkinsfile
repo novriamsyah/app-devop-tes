@@ -1,21 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage("Prepare Environment") {
-            steps {
-                script {
-                    // Install PHP (adjust the command based on your package manager)
-                    sh 'sudo apt-get update && sudo apt-get install -y php'
-
-                    // Verify PHP installation
-                    def phpVersion = sh(script: 'php -v', returnStatus: true).exitStatus
-                    if (phpVersion != 0) {
-                        error "PHP installation failed"
-                    }
-                }
-            }
-        }
-
+        
         stage("Prepare Laravel") {
             steps {
                 script {
