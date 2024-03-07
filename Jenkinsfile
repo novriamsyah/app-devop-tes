@@ -40,18 +40,18 @@ pipeline {
                     sh 'php artisan dusk'
                     
                 }
-                post{
-                        always{
-                            echo "====++++always++++===="
-                            sh 'docker stop mylapp1_uat'
-                        }
-                        success{
-                            echo "====++++only when successful++++===="
-                        }
-                        failure{
-                            echo "====++++only when failed++++===="
-                        }
-                    }
+            }
+            post{
+                always{
+                    echo "====++++always++++===="
+                    sh 'docker stop mylapp1_uat'
+                }
+                success{
+                    echo "====++++only when successful++++===="
+                }
+                failure{
+                    echo "====++++only when failed++++===="
+                }
             }
         }
 
